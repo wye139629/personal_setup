@@ -1,5 +1,8 @@
 - hosts: localhost
   become: true
+  vars:
+    source_key: "./.ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
   tasks:
     - include_tasks: tasks/zsh.yml
     - include_tasks: tasks/node.yml
