@@ -5,9 +5,9 @@
   tags:
     - node
 
-- name: Add snippet to ~/.bashrc file
+- name: Add snippet to ~/.zshrc file
   lineinfile:
-    path: ~/.bashrc
+    path: ~/.zshrc
     line: |
       export NVM_DIR="$HOME/.nvm"
       [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -16,7 +16,7 @@
   tags:
     - node
 
-- name: Install node 14.20 version
+- name: Install node 14.20 and 16.16 version
   shell: |
     export NVM_DIR="$HOME/.nvm"
     . "$NVM_DIR/nvm.sh"

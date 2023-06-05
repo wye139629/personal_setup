@@ -1,8 +1,8 @@
 - name: Ensure .ssh directory exists.
   file:
     dest: "{{ dest_key | dirname }}"
-    mode: 700 # Owner has read, wirte and execute permission
     state: directory
+    mode: "0700" # Owner has read, write, and execute permissions
   tags:
     - dotfiles
     - install
@@ -11,7 +11,7 @@
   copy:
     src: "{{ source_key }}"
     dest: "{{ dest_key }}"
-    mode: 600 # Owner has read and write
+    mode: "0600" # Owner has read and write permissions
   tags:
     - dotfiles
     - install
@@ -20,15 +20,15 @@
   copy:
     src: "{{ source_key }}.pub"
     dest: "{{ dest_key }}.pub"
-    mode: 644 # Everyone has read access
+    mode: "0644" # Everyone has read access
   tags:
     - dotfiles
     - install
     - ssh
-- name: Set authorized key took from file
+- name: Set authorized key taken from file
   authorized_key:
-    user: "{{ lookup('env', 'USER') }}"
+    user: william
     state: present
-    key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
+    key: "{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_rsa.pub') }}"
   with_fileglob:
     - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"
