@@ -13,5 +13,6 @@ RUN apt-get update && \
 
 COPY . . 
 
+
 CMD ["sh", "-c", "ansible-playbook $TAGS local.yml"]
 
