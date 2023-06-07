@@ -22,6 +22,10 @@ WORKDIR /home/william
 
 FROM setup_user
 
-CMD ["sh", "-c", "ansible-playbook $TAGS local.yml"]
+# Set up Homebrew and load environment settings within the same shell session
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+  && echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/william/.bashrc
+
+CMD ["sh", "-c", "source /home/linuxbrew/.linuxbrew/bin/brew && ansible-playbook $TAGS local.yml"]
 
 COPY . ./my_setup

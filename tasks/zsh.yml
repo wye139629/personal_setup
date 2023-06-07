@@ -1,11 +1,10 @@
 - name: Install zsh
-  become: true
-  apt: name=zsh
+  homebrew: name=zsh
   tags:
     - zsh
 - name: Change shell
   become: true
-  shell: chsh -s `which zsh`
+  command: chsh -s /usr/local/bin/zsh "william"
   tags:
     - zsh
 - name: Install oh-my-zsh
@@ -18,7 +17,10 @@
     dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
   tags:
     - zsh
-- name: Update zshrc
-  shell: sed -i 's/\(git\)/zsh-autosuggestions/' ~/.zshrc
+- name: Install powerlevel10k theme
+  ansible.builtin.git:
+    depth: 1
+    repo: "https://github.com/romkatv/powerlevel10k.git"
+    dest: "~/.oh-my-zsh/themes/powerlevel10k"
   tags:
     - zsh
