@@ -16,6 +16,12 @@
     - install
     - dotfiles
     - stow
+- name: Delete exsit .zshrc
+  shell: rm ~/.zshrc
+  tags:
+    - install
+    - dotfiles
+    - stow
 - name: Stow dotfiles
   shell: cd $HOME/dotfiles && zsh ./install
   tags:

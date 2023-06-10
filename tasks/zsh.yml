@@ -25,6 +25,6 @@
   ansible.builtin.git:
     depth: 1
     repo: "https://github.com/romkatv/powerlevel10k.git"
-    dest: "~/.oh-my-zsh/themes/powerlevel10k"
+    dest: "~/.oh-my-zsh/custom/themes/powerlevel10k"
   tags:
     - zsh
