@@ -1,0 +1,20 @@
+- name: Install tmux
+  homebrew: name=tmux
+  tags:
+    - terminal
+    - tmux
+- name: Install fzf
+  homebrew: name=fzf
+  tags:
+    - terminal
+    - fzf
+- name: Install tldr
+  homebrew: name=tldr
+  tags:
+    - terminal
+    - tldr
+- name: Install lazygit
+  homebrew: name=jesseduffield/lazygit/lazygit
+  tags:
+    - terminal
+    - lazygit

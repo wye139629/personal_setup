@@ -1,9 +1,0 @@
-- name: Install tmux
-  homebrew: name=tmux
-  tags:
-    - tmux
-- name: Install fzf
-  homebrew: name=fzf
-  tags:
-    - tmux
-    - fzf
