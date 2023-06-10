@@ -1,10 +1,14 @@
 - name: Install zsh
   homebrew: name=zsh
+  when:
+    - ansible_distribution == 'Ubuntu'
   tags:
     - zsh
 - name: Change shell
   become: true
   command: chsh -s /usr/local/bin/zsh "william"
+  when:
+    - ansible_distribution == 'Ubuntu'
   tags:
     - zsh
 - name: Install oh-my-zsh
